@@ -29,45 +29,37 @@ export default function SideBar() {
         </p>
       </div>
 
-      <nav className="flex flex-col gap-4 text-sm">
-        <Link href="/about" className={`hover:text-white flex items-center gap-3 group ${pathname === "/about" ? "text-white" : "text-gray-400"}`}>
-          <span
-            className={`h-0.5 transition-all duration-300 ${pathname === "/about"
-              ? "w-8 bg-sky-400"
-              : "w-0 bg-sky-400 group-hover:w-8"
-              }`}
-          />
+      <nav className="pl-10 w-50 flex flex-col text-sm">
+        <Link href="/about" className={`hover:text-white hover:bg-slate-700 flex items-center gap-4 px-4 py-3 border-l-4 transition ${pathname === "/about"
+          ? "border-sky-400 text-white bg-slate-700/30"
+          : "border-slate-700 text-slate-400 hover:text-white hover:border-slate-400"}`}>
           About
         </Link>
-        <Link href="/projects" className={`hover:text-white flex items-center gap-3 group ${pathname === "/projects" ? "text-white" : "text-gray-400"}`}>
-          <span
-            className={`h-0.5 transition-all duration-300 ${pathname === "/projects"
-              ? "w-8 bg-sky-400"
-              : "w-0 bg-sky-400 group-hover:w-8"
-              }`}
-          />
+        <Link href="/projects" className={`hover:text-white hover:bg-slate-700 flex items-center gap-4 px-4 py-3 border-l-4 transition ${pathname === "/experience"
+          ? "border-sky-400 text-white  bg-slate-700/30"
+          : "border-slate-700 text-slate-400 hover:text-white hover:border-slate-400"}`}>
+          Experience        </Link>
+        <Link href="/projects" className={`hover:text-white hover:bg-slate-700 flex items-center gap-4 px-4 py-3 border-l-4 transition ${pathname === "/projects"
+          ? "border-sky-400 text-white  bg-slate-700/30"
+          : "border-slate-700 text-slate-400 hover:text-white hover:border-slate-400"}`}>
           Projects
         </Link>
-        <Link href="/contact" className={`hover:text-white flex items-center gap-3 group ${pathname === "/contact" ? "text-white" : "text-gray-400"}`}>
-          <span
-            className={`h-0.5 transition-all duration-300 ${pathname === "/contact"
-              ? "w-8 bg-sky-400"
-              : "w-0 bg-sky-400 group-hover:w-8"
-              }`}
-          />
+        <Link href="/contact" className={`hover:text-white hover:bg-slate-700 flex items-center gap-4 px-4 py-3 border-l-4 transition ${pathname === "/contact"
+          ? "border-sky-400 text-white bg-slate-700/30"
+          : "border-slate-700 text-slate-400 hover:text-white hover:border-slate-400"}`}>
           Contact
         </Link>
 
       </nav>
       <footer className="text-sm text-gray-500">
         <div className="flex gap-4 mb-3">
-          <a href="https://github.com">
+          <a href="https://github.com" className="hover:text-white">
             <FaGithub size={35} />
           </a>
-          <a href="https://linkedin.com">
+          <a href="https://linkedin.com" className="hover:text-white">
             <FaLinkedin size={35} />
           </a>
-          <a href="mailto:mail@example.com">
+          <a href="mailto:mail@example.com" className="hover:text-white">
             <HiOutlineMail size={35} />
           </a>
         </div>
