@@ -1,7 +1,15 @@
+"use client";
+import About from "@/components/sections/About";
+import Contact from "@/components/sections/Contact";
+import Projects from "@/components/sections/Projects";
+import { useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout() {
+
+  const [section, setSection] = useState("about");
+
   return (
     <main className="min-h-screen bg-slate-800 text-slate-200">
       <div className="max-w-7xl mx-auto flex">
@@ -32,9 +40,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
           {/* NAVIGATION */}
           <nav className="flex flex-col gap-3 text-gray-400 text-sm">
-            <a href="#about" className="hover:text-white transition">About</a>
-            <a href="#projects" className="hover:text-white transition">Projects</a>
-            <a href="#contact" className="hover:text-white transition">Contact</a>
+            <button onClick={() => setSection("about")} className="hover:text-white text-left">
+              About
+            </button>
+            <button onClick={() => setSection("projects")} className="hover:text-white text-left">
+              Projects
+            </button>
+            <button onClick={() => setSection("contact")} className="hover:text-white text-left" >
+              Contact
+            </button>
           </nav>
 
           {/* FOOTER */}
@@ -54,7 +68,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
         {/* COLONNE DROITE */}
         <div className="basis-3/5 px-12 py-24 flex flex-col">
-          {children}
+          {section === "about" && <About />}
+          {section === "projects" && <Projects />}
+          {section === "contact" && <Contact />}
         </div>
       </div>
     </main>
