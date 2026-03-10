@@ -1,7 +1,7 @@
 "use client"; // nécessaire pour hooks
 
 import { useEffect } from "react";
-import Navbar from "@/components/layout/Navbar";
+import SideBar from "@/components/SideBar";
 import './globals.css';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -12,9 +12,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="fr">
-      <body>
-        <Navbar />
-        {children}
+      <body className="min-h-screen bg-slate-800 text-slate-200">
+        <main className="max-w-7xl mx-auto flex">
+
+          <SideBar />
+
+          {/*Colonne de droite */}
+          <div className="basis-3/5 px-12 py-24">
+            {children}
+          </div>
+        </main>
       </body>
     </html>
   );
