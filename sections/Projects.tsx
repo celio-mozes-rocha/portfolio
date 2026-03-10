@@ -1,29 +1,66 @@
-export default function Projects() {
-  const projects = [
-    {
-      title: "Planétarium",
-      description: "Application interactive du système solaire",
-      tech: ["React", "Node.js"],
-      github: "#"
-    }
-  ];
+"use client";
+import { motion } from "framer-motion";
 
+import { projects } from "@/data/projetcts";
+
+export default function Projects() {
   return (
-    <section id="projects" className="py-24 px-6 bg-gray-50 text-gray-900">
-      <h2 className="text-3xl font-bold mb-12 text-center">Projets</h2>
-      <div className="grid gap-8 md:grid-cols-2">
-        {projects.map((proj, idx) => (
-          <div key={idx} className="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
-            <h3 className="text-xl font-semibold mb-2">{proj.title}</h3>
-            <p className="text-gray-600 mb-2">{proj.description}</p>
-            <div className="flex gap-2 flex-wrap">
+    <section id="projects" className="min-h-screen flex flex-col gap-6 scroll-mt-24">
+
+      <h2 className="text-2xl font-bold text-sky-400">
+        Projets
+      </h2>
+
+      {projects.map((proj, idx) => (
+        <motion.div
+          key={idx}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: idx * 0.1 }}
+          viewport={{ once: true }}
+          className="group flex flex-col md:flex-row gap-6 items-center hover:bg-sky-900/30 p-4 rounded-lg transition"
+        >
+
+          {/* image */}
+          <img
+            src={proj.image}
+            alt={proj.title}
+            className="w-full md:w-1/2 rounded-md opacity-80 group-hover:opacity-100 transition"
+          />
+
+          {/* texte */}
+          <div className="flex flex-col gap-3 md:w-1/2">
+
+            <h3 className="text-xl font-semibold group-hover:text-sky-300 transition">
+              {proj.title}
+            </h3>
+
+            <p className="text-gray-400">
+              {proj.description}
+            </p>
+
+            <div className="flex flex-wrap gap-2 text-xs text-gray-500">
               {proj.tech.map((tech, i) => (
-                <span key={i} className="text-xs bg-gray-200 px-2 py-1 rounded">{tech}</span>
+                <span key={i} className="text-xs bg-sky-600/30 text-white/80 px-3 py-1 rounded-2xl">
+                  {tech}
+                </span>
               ))}
             </div>
+
+            <div className="flex gap-4 text-sm">
+              <a href={proj.github} className="hover:text-sky-400">
+                GitHub
+              </a>
+              <a href={proj.demo} className="hover:text-sky-400">
+                Demo
+              </a>
+            </div>
+
           </div>
-        ))}
-      </div>
+
+        </motion.div>
+      ))}
+
     </section>
   );
 }

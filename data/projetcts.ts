@@ -1,9 +1,36 @@
 export const projects = [
   {
     title: "Planétarium",
-    description: "Application interactive sur le système solaire.",
-    tech: ["React", "Node.js", "PostgreSQL"],
+    description: "Application interactive du système solaire",
+    tech: ["React", "Node.js", "Three.js"],
     github: "#",
     demo: "#",
+    image: "/images/screenshot1.png",
+  },
+  {
+    title: "Portfolio",
+    description: "Mon portfolio moderne en Next.js et Tailwind",
+    tech: ["Next.js", "Tailwind CSS", "Framer Motion"],
+    github: "#",
+    demo: "#",
+    image: "/images/screenshot2.png",
+  },
+  {
+    title: "Blog App",
+    description: "Application de blog avec authentification et CRUD",
+    tech: [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "React",
+      "Node.js",
+      "MongoDB",
+      "React",
+      "Node.js",
+      "MongoDB",
+    ],
+    github: "#",
+    demo: "#",
+    image: "/images/screenshot3.png",
   },
 ];

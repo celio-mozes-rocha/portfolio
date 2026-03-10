@@ -38,7 +38,6 @@ export default function Hero() {
       <motion.div
         className="absolute bottom-8 text-gray-400 animate-bounce"
       >
-        ⬇️
       </motion.div>
     </section>
   );
