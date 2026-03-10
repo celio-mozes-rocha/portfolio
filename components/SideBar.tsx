@@ -13,8 +13,8 @@ export default function SideBar() {
 
       <div>
         <img
-          src="/images/ProfilLinkdin-Moi.png"
-          className="w-40 rounded-e-xs mb-6"
+          src="/images/photolinkdin4.jpg"
+          className="w-40 rounded mb-6"
         />
         <h1 className="text-4xl font-bold">
           Célio ROCHA
@@ -30,16 +30,16 @@ export default function SideBar() {
       </div>
 
       <nav className="pl-10 w-50 flex flex-col text-sm">
-        <Link href="/about" className={`hover:text-white hover:bg-slate-700 flex items-center gap-4 px-4 py-3 border-l-4 transition ${pathname === "/about"
+        <Link href="/about" className={`hover:text-white hover:bg-slate-700 tracking-wide flex items-center gap-4 px-4 py-3 border-l-4 transition ${pathname === "/about"
           ? "border-sky-400 text-white bg-slate-700/30"
           : "border-slate-700 text-slate-400 hover:text-white hover:border-slate-400"}`}>
           About
         </Link>
-        <Link href="/projects" className={`hover:text-white hover:bg-slate-700 flex items-center gap-4 px-4 py-3 border-l-4 transition ${pathname === "/experience"
+        <Link href="/projects" className={`hover:text-white hover:bg-slate-700 tracking-wide flex items-center gap-4 px-4 py-3 border-l-4 transition ${pathname === "/experience"
           ? "border-sky-400 text-white  bg-slate-700/30"
           : "border-slate-700 text-slate-400 hover:text-white hover:border-slate-400"}`}>
           Experience        </Link>
-        <Link href="/projects" className={`hover:text-white hover:bg-slate-700 flex items-center gap-4 px-4 py-3 border-l-4 transition ${pathname === "/projects"
+        <Link href="/projects" className={`hover:text-white hover:bg-slate-700 tracking-wide flex items-center gap-4 px-4 py-3 border-l-4 transition ${pathname === "/projects"
           ? "border-sky-400 text-white  bg-slate-700/30"
           : "border-slate-700 text-slate-400 hover:text-white hover:border-slate-400"}`}>
           Projects
