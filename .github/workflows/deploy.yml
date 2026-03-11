@@ -13,7 +13,11 @@ jobs:
 
       # Build image
       - name: Build portfolio image
-        run: docker build -t portfolio -f Dockerfile.prod .
+        run: |
+          docker build \
+          --build_ar GIT_COMMIT=$(git rev-parse --short HEAD) \
+          --build_arg BUILD_DATE=$(date -u +"%d-%m-%Y) \
+          -t portfolio -f Dockerfile.prod .
 
       # Save image
       - name: Save image

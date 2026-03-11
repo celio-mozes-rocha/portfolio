@@ -1,10 +1,10 @@
 "use client"
 import { motion } from "framer-motion";
 
-export default function Contact() {
+export default function Experience() {
   return (
     <motion.section
-      id="contact"
+      id="experience"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -12,7 +12,7 @@ export default function Contact() {
       className="min-h-screenb scroll-mt-24 flex flex-col gap-6">
 
       <h2 className="text-2xl font-bold text-sky-400">
-        Contact
+        Mes expériences
       </h2>
 
       <p className="text-gray-400">
