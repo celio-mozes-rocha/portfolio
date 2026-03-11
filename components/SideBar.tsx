@@ -55,13 +55,13 @@ export default function SideBar() {
       <footer className="text-sm text-gray-500">
         <div className="flex gap-4 mb-3">
           <a href="https://github.com" className="hover:text-white">
-            <FaGithub size={35} />
+            <FaGithub size={30} />
           </a>
           <a href="https://linkedin.com" className="hover:text-white">
-            <FaLinkedin size={35} />
+            <FaLinkedin size={30} />
           </a>
           <a href="mailto:mail@example.com" className="hover:text-white">
-            <HiOutlineMail size={35} />
+            <HiOutlineMail size={30} />
           </a>
         </div>
         <hr /><br />
