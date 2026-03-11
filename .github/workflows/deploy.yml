@@ -46,9 +46,9 @@ jobs:
           ssh -p ${{ secrets.VPS_PORT }} ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
           set -e
 
-          docker-compose -f docker-compose.prod.yml down --remove-orphans          
+          docker-compose -p portfolio -f docker-compose.prod.yml down --remove-orphans          
           docker load -i portfolio.tar
-          docker-compose -f docker-compose.prod.yml up -d --force-recreate
+          docker-compose -p portfolio -f docker-compose.prod.yml up -d --force-recreate
 
           rm portfolio.tar
           docker image prune -f
