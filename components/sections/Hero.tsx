@@ -1,12 +1,10 @@
-"use client"; // nécessaire pour Framer Motion dans Next.js 13+
+"use client";
 
 import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-linear-to-br from-gray-50 to-white">
-
-      {/* Titre principal */}
+    <section className="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-linear-to-br from-gray-50 to-white relative">
       <motion.h1
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -15,8 +13,6 @@ export default function Hero() {
       >
         Développeur Web & Concepteur d’Applications
       </motion.h1>
-
-      {/* Sous-titre */}
       <motion.p
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -25,8 +21,6 @@ export default function Hero() {
       >
         Je développe des applications web modernes, performantes et centrées sur l’utilisateur.
       </motion.p>
-
-      {/* Boutons */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -40,7 +34,11 @@ export default function Hero() {
           Me contacter
         </a>
       </motion.div>
-
+      {/* Indicateur scroll */}
+      <motion.div
+        className="absolute bottom-8 text-gray-400 animate-bounce"
+      >
+      </motion.div>
     </section>
   );
 }

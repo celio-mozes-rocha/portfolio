@@ -1,0 +1,71 @@
+"use client";
+import { motion } from "framer-motion";
+
+import { projects } from "@/data/projetcts";
+
+export default function Projects() {
+  return (
+    <motion.section id="projects"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="min-h-screen flex flex-col gap-6 scroll-mt-24">
+
+      <h2 className="text-2xl font-bold text-sky-400">
+        Mes projets
+      </h2>
+
+      {projects.map((proj, idx) => (
+        <motion.div
+          key={idx}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: idx * 0.1 }}
+          viewport={{ once: true }}
+          className="group flex flex-col md:flex-row gap-6 items-center hover:bg-sky-900/30 p-4 rounded-lg transition"
+        >
+
+          {/* image */}
+          <img
+            src={proj.image}
+            alt={proj.title}
+            className="w-full md:w-1/2 rounded-md opacity-80 group-hover:opacity-100 transition"
+          />
+
+          {/* texte */}
+          <div className="flex flex-col gap-3 md:w-1/2">
+
+            <h3 className="text-xl font-semibold group-hover:text-sky-300 transition">
+              {proj.title}
+            </h3>
+
+            <p className="text-gray-400">
+              {proj.description}
+            </p>
+
+            <div className="flex flex-wrap gap-2 text-xs text-gray-500">
+              {proj.tech.map((tech, i) => (
+                <span key={i} className="text-xs bg-sky-600/30 text-white/80 px-3 py-1 rounded-2xl">
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <div className="flex gap-4 text-sm">
+              <a href={proj.github} className="hover:text-sky-400">
+                GitHub
+              </a>
+              <a href={proj.demo} className="hover:text-sky-400">
+                Demo
+              </a>
+            </div>
+
+          </div>
+
+        </motion.div>
+      ))}
+
+    </motion.section>
+  );
+}
