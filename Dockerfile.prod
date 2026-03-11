@@ -18,6 +18,12 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
+ARG GIT_COMMIT
+ARG BUILD_DATE
+
+ENV NEXT_PUBLIC_GIT_COMMIT=$GIT_COMMIT
+ENV NEXT_PUBLIC_BUILD_DATE=$BUILD_DATE
+
 # Copier seulement le nécessaire
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
