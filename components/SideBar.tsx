@@ -13,8 +13,8 @@ export default function SideBar() {
 
       <div>
         <img
-          src="/images/photolinkdin4.jpg"
-          className="w-40 rounded mb-6"
+          src="/images/photo-500x500.png"
+          className="w-40 rounded-full mb-6 ml-10 border-5 border-slate-700"
         />
         <h1 className="text-4xl font-bold">
           Célio ROCHA
@@ -33,21 +33,22 @@ export default function SideBar() {
         <Link href="/about" className={`hover:text-white hover:bg-slate-700 tracking-wide flex items-center gap-4 px-4 py-3 border-l-4 transition ${pathname === "/about"
           ? "border-sky-400 text-white bg-slate-700/30"
           : "border-slate-700 text-slate-400 hover:text-white hover:border-slate-400"}`}>
-          About
+          A propos de moi
         </Link>
-        <Link href="/projects" className={`hover:text-white hover:bg-slate-700 tracking-wide flex items-center gap-4 px-4 py-3 border-l-4 transition ${pathname === "/experience"
+        <Link href="/experience" className={`hover:text-white hover:bg-slate-700 tracking-wide flex items-center gap-4 px-4 py-3 border-l-4 transition ${pathname === "/experience"
           ? "border-sky-400 text-white  bg-slate-700/30"
           : "border-slate-700 text-slate-400 hover:text-white hover:border-slate-400"}`}>
-          Experience        </Link>
+          Experiences
+        </Link>
         <Link href="/projects" className={`hover:text-white hover:bg-slate-700 tracking-wide flex items-center gap-4 px-4 py-3 border-l-4 transition ${pathname === "/projects"
           ? "border-sky-400 text-white  bg-slate-700/30"
           : "border-slate-700 text-slate-400 hover:text-white hover:border-slate-400"}`}>
-          Projects
+          Projets
         </Link>
         <Link href="/contact" className={`hover:text-white hover:bg-slate-700 flex items-center gap-4 px-4 py-3 border-l-4 transition ${pathname === "/contact"
           ? "border-sky-400 text-white bg-slate-700/30"
           : "border-slate-700 text-slate-400 hover:text-white hover:border-slate-400"}`}>
-          Contact
+          Me contacter
         </Link>
 
       </nav>
@@ -66,6 +67,11 @@ export default function SideBar() {
         <hr /><br />
         <p>
           © {new Date().getFullYear()} Célio MOZES ROCHA
+        </p>
+        <p className="text-xs text-gray-500 mt-4">
+          Deploy: {process.env.NEXT_PUBLIC_BUILD_DATE}
+          {" | "}
+          Commit: {process.env.NEXT_PUBLIC_GIT_COMMIT}
         </p>
       </footer>
     </aside>

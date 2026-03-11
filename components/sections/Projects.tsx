@@ -5,10 +5,15 @@ import { projects } from "@/data/projetcts";
 
 export default function Projects() {
   return (
-    <section id="projects" className="min-h-screen flex flex-col gap-6 scroll-mt-24">
+    <motion.section id="projects"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="min-h-screen flex flex-col gap-6 scroll-mt-24">
 
       <h2 className="text-2xl font-bold text-sky-400">
-        Projets
+        Mes projets
       </h2>
 
       {projects.map((proj, idx) => (
@@ -61,6 +66,6 @@ export default function Projects() {
         </motion.div>
       ))}
 
-    </section>
+    </motion.section>
   );
 }
