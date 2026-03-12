@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <SideBar />
 
           {/*Colonne de droite */}
-          <div className="basis-3/5 px-12 py-24">
+          <div className="basis-4/5 px-12 py-24">
             {children}
           </div>
         </main>
