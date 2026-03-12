@@ -1,5 +1,6 @@
 "use client";
 
+import { paragraphs } from "@/data/texts";
 import { motion } from "framer-motion";
 
 export default function About() {
@@ -15,11 +16,11 @@ export default function About() {
       <h2 className="text-2xl font-bold text-sky-400">
         A propos de moi
       </h2>
-
-      <p className="text-gray-400">
-        Développeur web passionné par la création d'applications modernes
-        avec React, Next.js et Node.js.
-      </p>
+      <div className="max-w-full text-[18px] text-gray-400 leading-relaxed space-y-4">
+        {paragraphs.map((text, i) => (
+          <p key={i}>{text}</p>
+        ))}
+      </div>
     </motion.section>
   );
 }
