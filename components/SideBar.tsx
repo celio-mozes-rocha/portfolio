@@ -40,7 +40,7 @@ export default function SideBar() {
         <Link href="/experience" className={`hover:text-white hover:bg-slate-700 tracking-wide flex items-center gap-4 px-4 py-3 border-l-4 transition ${pathname === "/experience"
           ? "border-sky-400 text-white  bg-slate-700/30"
           : "border-slate-700 text-slate-400 hover:text-white hover:border-slate-400"}`}>
-          Experiences
+          Expériences
         </Link>
         <Link href="/projects" className={`hover:text-white hover:bg-slate-700 tracking-wide flex items-center gap-4 px-4 py-3 border-l-4 transition ${pathname === "/projects"
           ? "border-sky-400 text-white  bg-slate-700/30"
