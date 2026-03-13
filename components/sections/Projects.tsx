@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-
 import { projects } from "@/data/projetcts";
 import { FiExternalLink } from "react-icons/fi";
 
@@ -11,10 +10,10 @@ export default function Projects() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="min-h-screen flex flex-col gap-6 scroll-mt-24">
+      className="min-h-screenb scroll-mt-24 flex flex-col gap-6">
 
       <h2 className="text-2xl font-bold text-sky-400">
-        Mes projets
+        Projets
       </h2>
 
       {projects.map((proj, idx) => (
@@ -41,7 +40,7 @@ export default function Projects() {
               {proj.title}
             </h3>
 
-            <p className="text-gray-400">
+            <p className="text-gray-400 text-[17px]">
               {proj.description}
             </p>
 
@@ -71,12 +70,9 @@ export default function Projects() {
                 </a>
               }
             </div>
-
           </div>
-
         </motion.div>
       ))}
-
     </motion.section>
   );
 }
