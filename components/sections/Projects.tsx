@@ -30,11 +30,11 @@ export default function Projects() {
           <img
             src={proj.image}
             alt={proj.title}
-            className="w-full md:w-2/5 rounded-md opacity-80 group-hover:opacity-100 transition mt-0"
+            className="w-full md:w-50 rounded-md opacity-80 group-hover:opacity-100 transition mt-0"
           />
 
           {/* texte */}
-          <div className="flex flex-col gap-3 md:w-3/5">
+          <div className="flex flex-col gap-3 md:w-142">
 
             <h3 className="text-xl font-semibold group-hover:text-sky-300 transition">
               {proj.title}
