@@ -13,10 +13,8 @@ export default function About() {
       viewport={{ once: true }}
       className="min-h-screenb scroll-mt-24 flex flex-col gap-6"
     >
-      <h2 className="text-2xl font-bold text-sky-400">
-        A propos de moi
-      </h2>
-      <div className="max-w-full text-[18px] text-gray-400 leading-relaxed space-y-4">
+      <h2 className="text-2xl font-bold text-sky-400">A propos de moi</h2>
+      <div className="max-w-full text-[clamp(0.875rem,1.5vw,1rem)] text-gray-400 leading-relaxed space-y-4">
         {paragraphs.map((text, i) => (
           <p key={i}>{text}</p>
         ))}

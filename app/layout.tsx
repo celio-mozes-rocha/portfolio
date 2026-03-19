@@ -17,13 +17,13 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className="min-h-screen bg-slate-800 text-slate-200">
-        <main className="max-w-7xl mx-auto flex">
-          <aside>
-            <SideBar />
-          </aside>
+        <main className="flex flex-col lg:flex-row">
+          <SideBar />
 
           {/*Colonne de droite */}
-          <div className="basis-4/5 px-12 py-24">{children}</div>
+          <div className="flex-1 px-6 lg:px-12 py-12 lg:py-24 w-full lg:max-w-3xl text-[clamp(0.875rem,2.5vw,1rem)]">
+            {children}
+          </div>
         </main>
       </body>
     </html>
