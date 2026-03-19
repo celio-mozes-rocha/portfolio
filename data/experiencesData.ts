@@ -67,7 +67,7 @@ export const experienceData: ExperienceSectionType[] = [
         company: "Wild Code School",
         period: "Septembre 2024 Mars 2025",
         description:
-          "Projet Full Stack collaboratif : application de géolocalisation de bornes de recharche pour voitures éléctriques (IRVE). Compétences pratiquées :",
+          "Projet Full Stack collaboratif : application de géolocalisation de bornes de recharge pour voitures éléctriques (IRVE). Compétences pratiquées :",
         learnings: [
           "Conception d'API REST",
           "Architecture Full Stack",
