@@ -8,30 +8,32 @@ export default function SideBar() {
   const pathname = usePathname();
 
   return (
-    <aside className="basis-2/5 h-screen sticky top-0 flex flex-col justify-between px-12 py-5">
+    <aside className="w-full lg:basis-2/5 lg:h-screen lg:sticky lg:top-0 flex flex-col justify-between px-6 lg:px-12 py-8 border-b lg:border-b-0 border-slate-700">
       <div>
         <a href="/">
-          <img
+          {/* <img
             src="/images/photo-500x500.png"
-            className="w-30 rounded-full mb-6 ml-10 border-5 border-slate-700"
-          />
-          <h1 className="text-4xl font-bold">Célio ROCHA</h1>
+            className="w-32 rounded-full mb-1 ml-10 border-5 border-slate-700"
+          /> */}
+          <h1 className="text-[clamp(1.5rem,3vw,2.5rem)] font-bold">
+            Célio ROCHA
+          </h1>
         </a>
 
-        <h2 className="text-xl text-sky-400 mt-2">
-          Développeur Web et concepteur d'applications full-stack
+        <h2 className="text-[clamp(0.8rem,2vw,1.2rem)] text-sky-400 mt-1">
+          Concepteur d'applications full-stack
         </h2>
 
-        <p className="text-[18px] text-gray-400 leading-relaxed space-y-4 mt-4 max-w-sm">
+        <p className="text-[clamp(0.75rem,2vw,1rem)] text-gray-400 leading-relaxed space-y-4 mt-4 max-w-sm">
           Je développe des applications web modernes avec React, Next.js et
           Node.js.
         </p>
       </div>
 
-      <nav className="w-50 flex flex-col text-[18px] text-gray-400">
+      <nav className="w-50 flex flex-col text-gray-400">
         <Link
           href="/about"
-          className={`hover:text-white hover:bg-slate-700 tracking-wide flex items-center gap-4 px-4 py-3 border-l-4 transition ${
+          className={`hover:text-white hover:bg-slate-700 tracking-wide flex items-center gap-4 px-4 py-2 border-l-4 transition text-[clamp(0.875rem,1.5vw,1rem)] ${
             pathname === "/about"
               ? "border-sky-400 text-white bg-slate-700/30"
               : "border-slate-700 text-slate-400 hover:text-white hover:border-slate-400"
@@ -41,7 +43,7 @@ export default function SideBar() {
         </Link>
         <Link
           href="/experience"
-          className={`hover:text-white hover:bg-slate-700 tracking-wide flex items-center gap-4 px-4 py-3 border-l-4 transition ${
+          className={`hover:text-white hover:bg-slate-700 tracking-wide flex items-center gap-4 px-4 py-2 border-l-4 transition text-[clamp(0.875rem,1.5vw,1rem)] ${
             pathname === "/experience"
               ? "border-sky-400 text-white  bg-slate-700/30"
               : "border-slate-700 text-slate-400 hover:text-white hover:border-slate-400"
@@ -51,7 +53,7 @@ export default function SideBar() {
         </Link>
         <Link
           href="/projects"
-          className={`hover:text-white hover:bg-slate-700 tracking-wide flex items-center gap-4 px-4 py-3 border-l-4 transition ${
+          className={`hover:text-white hover:bg-slate-700 tracking-wide flex items-center gap-4 px-4 py-2 border-l-4 transition text-[clamp(0.875rem,1.5vw,1rem)]${
             pathname === "/projects"
               ? "border-sky-400 text-white  bg-slate-700/30"
               : "border-slate-700 text-slate-400 hover:text-white hover:border-slate-400"
@@ -61,7 +63,7 @@ export default function SideBar() {
         </Link>
         <Link
           href="/contact"
-          className={`hover:text-white hover:bg-slate-700 flex items-center gap-4 px-4 py-3 border-l-4 transition ${
+          className={`hover:text-white hover:bg-slate-700 flex items-center gap-4 px-4 py-3 border-l-4 transition text-[clamp(0.875rem,1.5vw,1rem)]  ${
             pathname === "/contact"
               ? "border-sky-400 text-white bg-slate-700/30"
               : "border-slate-700 text-slate-400 hover:text-white hover:border-slate-400"
@@ -70,7 +72,7 @@ export default function SideBar() {
           Me contacter
         </Link>
       </nav>
-      <footer className="text-sm text-gray-500">
+      <footer className="text-xs sm:text-sm text-gray-500">
         <div className="flex gap-4 mb-3">
           <a
             href="https://github.com"
