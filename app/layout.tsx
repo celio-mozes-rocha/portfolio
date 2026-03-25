@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className="min-h-screen bg-slate-800 text-slate-200">
-        <main className="flex flex-col lg:flex-row">
+        <main className="max-w-7xl mx-auto flex flex-col lg:flex-row">
           <SideBar />
 
           {/*Colonne de droite */}
