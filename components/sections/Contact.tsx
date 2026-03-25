@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { contactSchema, ContactFormData } from "../../lib/contact-schema";
+import { useForm } from "react-hook-form";
 
 // Définir le type du formulaire
 type ContactForm = HTMLFormElement & {
@@ -14,18 +17,14 @@ type ContactForm = HTMLFormElement & {
 export default function Contact() {
   const [status, setStatus] = useState("");
 
-  async function handleSubmit(event: React.SubmitEvent) {
-    event.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<ContactFormData>({ resolver: zodResolver(contactSchema) });
 
-    const form = event.currentTarget as ContactForm;
-
-    const data = {
-      name: form.name.value,
-      email: form.email.value,
-      message: form.message.value,
-      company: form.company.value,
-    };
-
+  async function onSubmit(data: ContactFormData) {
     const res = await fetch("/api/contact", {
       method: "POST",
       body: JSON.stringify(data),
@@ -33,7 +32,7 @@ export default function Contact() {
 
     if (res.ok) {
       setStatus("Message envoyé ✅");
-      form.reset();
+      reset();
     } else {
       setStatus("Erreur lors de l'envoi ❌");
     }
@@ -51,32 +50,46 @@ export default function Contact() {
       >
         <h2 className="text-2xl font-bold text-sky-400">Me contacter</h2>
 
-        <form onSubmit={handleSubmit} className="space-y-4 max-w-md">
-          <input
-            name="name"
-            placeholder="Nom"
-            required
-            className="w-full border p-2 rounded"
-          />
-
-          <input
-            name="email"
-            type="email"
-            placeholder="Email (optionnel)"
-            required
-            className="w-full border p-2 rounded"
-          />
-
-          <textarea
-            name="message"
-            rows={4}
-            placeholder="Message"
-            required
-            className="w-full border p-2 rounded"
-          />
-
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 max-w-md">
+          <div className="mb-4">
+            <input
+              {...register("name")}
+              placeholder="Nom"
+              className="w-full border p-2 rounded"
+            />
+            {errors.name && (
+              <p className="text-red-500 text-xs mt-1 ml-1 transition-all duration-200 ease-in-out">
+                {errors.name.message}
+              </p>
+            )}
+          </div>
+          <div className="mb-4">
+            <input
+              {...register("email")}
+              placeholder="Email (optionnel)"
+              className="w-full border p-2 rounded"
+            />
+            {errors.email && (
+              <p className="text-red-500 text-xs mt-1 ml-1 transition-all duration-200 ease-in-out">
+                {errors.email.message}
+              </p>
+            )}
+          </div>
+          <div className="mb-4">
+            <textarea
+              {...register("message")}
+              rows={4}
+              placeholder="Message"
+              className="w-full border p-2 rounded"
+            />
+            {errors.message && (
+              <p className="text-red-500 text-xs mt-1 ml-1 transition-all duration-200 ease-in-out">
+                {errors.message.message}
+              </p>
+            )}
+          </div>
           {/* honeypot */}
-          <input type="text" name="company" className="hidden" />
+          <input type="text" {...register("company")} className="hidden" />
 
           <button
             type="submit"
