@@ -24,8 +24,7 @@ ARG BUILD_DATE
 ENV NEXT_PUBLIC_GIT_COMMIT=$GIT_COMMIT
 ENV NEXT_PUBLIC_BUILD_DATE=$BUILD_DATE
 
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 
 EXPOSE 3000
