@@ -7,3 +7,10 @@ services:
     restart: always
     ports:
       - "3000:3000"
+
+environments:
+  SMTP_HOST:smtp-relay.brevo.com
+  SMTP_PORT:587
+  SMTP_USER:${SMTP_USER}
+  SMTP_PASS:${SMTP_PASS}
+  CONTACT_EMAIL:${CONTACT_EMAIL}

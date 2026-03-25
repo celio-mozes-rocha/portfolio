@@ -1,9 +1,40 @@
 import nodemailer from "nodemailer"
 import { NextResponse } from "next/server"
+import { contactSchema } from "@/lib/contact-schema";
+import rateLimit from "../../../lib/rateLimit"
+import { success } from "zod";
+
 
 export async function POST(req: Request) {
     try {
-        const { name, email, message } = await req.json()
+
+        const ip = req.headers.get("x-forwarded-for") ?? "unknown";
+        if (!rateLimit(ip)) {
+            return NextResponse.json(
+                { error: "Too many requests" },
+                { status: 429 }
+            )
+        }
+
+        const body = await req.json()
+
+        const parsed = contactSchema.safeParse(body);
+
+        if (!parsed.success) {
+            return NextResponse.json(
+                { error: "Invalid form dat" },
+                { status: 400 }
+            )
+        }
+
+        const { name, email, message, company } = parsed.data;
+
+        // honeypot anti-spamÒ
+        if (company) {
+            return NextResponse.json(
+                { success: true }
+            )
+        }
 
         const transporter = nodemailer.createTransport({
             host: process.env.SMTP_HOST,
@@ -18,7 +49,7 @@ export async function POST(req: Request) {
             from: `"Portfolio contact" <${process.env.CONTACT_EMAIL}>`,
             to: process.env.CONTACT_EMAIL,
             subject: `Message de ${name}`,
-            replyTo: email,
+            replyTo: email || process.env.CONTACT_EMAIL,
             text: message,
             html: `
         <p><strong>Nom :</strong> ${name}</p>
@@ -31,7 +62,6 @@ export async function POST(req: Request) {
 
     } catch (error) {
         console.error(error)
-        console.info("host : ", process.env.SMTP_USER);
         return NextResponse.json(
             { success: false },
             { status: 500 }
