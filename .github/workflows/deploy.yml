@@ -43,7 +43,7 @@ jobs:
       # Deploy on VPS
       - name: Deploy
         run: |
-          ssh -p ${{ secrets.VPS_PORT }} ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
+          ssh -p ${{ secrets.VPS_PORT }} ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << EOF
           set -e
 
           docker-compose -p portfolio -f docker-compose.prod.yml down --remove-orphans          
