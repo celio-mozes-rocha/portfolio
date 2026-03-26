@@ -31,6 +31,15 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -p ${{ secrets.VPS_PORT }} ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts
 
+      - name: Creat .env file
+        run: |
+          echo "SMTP_USER=${{ secrets.SMTP_USER }}" >> .env
+          echo "SMTP_PASS=${{ secrets.SMTP_PASS }}" >> .env
+          echo "CONTACT_EMAIL=${{ secrets.CONTACT_EMAIL }}" >> .env
+
+          scp -P ${{ secrets.VPS_PORT }} .env \
+          ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/home/${{ secrets.VPS_USER }}/
+
       # Copy image & docker-compose
       - name: Copy image and docker-compose to VPS
         run: |
@@ -49,11 +58,7 @@ jobs:
           docker-compose -p portfolio -f docker-compose.prod.yml down --remove-orphans          
           docker load -i portfolio.tar
 
-          SMTP_USER="${{ secrets.SMTP_USER }}" \
-          SMTP_PASS="${{ secrets.SMTP_PASS }}" \
-          CONTACT_EMAIL="${{ secrets.CONTACT_EMAIL }}" 
-
-          docker-compose -p portfolio -f docker-compose.prod.yml up -d --force-recreate
+          docker-compose --env-file .env -p portfolio -f docker-compose.prod.yml up -d --force-recreate
 
           rm portfolio.tar
           docker image prune -f
