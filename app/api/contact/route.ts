@@ -2,7 +2,6 @@ import nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
 import { contactSchema } from "@/lib/contact-schema";
 import rateLimit from "../../../lib/rateLimit";
-import { success } from "zod";
 
 export async function POST(req: Request) {
   try {
