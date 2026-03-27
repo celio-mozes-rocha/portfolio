@@ -46,7 +46,7 @@ jobs:
           ssh -p ${{ secrets.VPS_PORT }} ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
           set -e
 
-          cat -A /home/${{ secrets.VPS_USER }}/.env <<EOL
+          cat > /home/${{ secrets.VPS_USER }}/.env <<EOL
           SMTP_USER=${{ secrets.SMTP_USER }}
           SMTP_PASS=${{ secrets.SMTP_PASS }}
           CONTACT_EMAIL=${{ secrets.CONTACT_EMAIL }}
