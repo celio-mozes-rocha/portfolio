@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { contactSchema, ContactFormData } from "../../lib/contact-schema";
@@ -16,27 +16,56 @@ type ContactForm = HTMLFormElement & {
 
 export default function Contact() {
   const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false)
 
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
-  } = useForm<ContactFormData>({ resolver: zodResolver(contactSchema) });
+    formState: { errors, isDirty, isValid },
+    watch,
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+    mode: "onChange",
+    defaultValues: {
+      email: "",
+      subject: "",
+      message: "",
+      company: "",
+    }
+  });
+
+  const isDisabled = !isValid || loading;
 
   async function onSubmit(data: ContactFormData) {
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
+    setLoading(true);
+    setStatus("");
 
-    if (res.ok) {
-      setStatus("Message envoyé ✅");
-      reset();
-    } else {
-      setStatus("Erreur lors de l'envoi ❌");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        setStatus("Merci. Votre message a été envoyé ✅");
+        reset();
+      } else {
+        setStatus("Oups, un problème est survenu. Réessayez plus tard. ❌");
+      }
+    } catch (error) {
+      setStatus("Oups, une erreur réseau est survenue ❌");
+
+    } finally {
+      setLoading(false)
     }
   }
+
+  useEffect(() => {
+    if (status && isDirty) {
+      setStatus("")
+    }
+  }, [isDirty]);
 
   return (
     <>
@@ -48,26 +77,14 @@ export default function Contact() {
         viewport={{ once: true }}
         className="min-h-screenb scroll-mt-24 flex flex-col gap-6"
       >
-        <h2 className="text-2xl font-bold text-sky-400">Me contacter</h2>
+        <h1 className="text-2xl font-bold text-sky-400">Me contacter</h1>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 max-w-md">
-          <div className="mb-4">
-            <input
-              {...register("name")}
-              placeholder="Nom"
-              className="w-full border p-2 rounded"
-            />
-            {errors.name && (
-              <p className="text-red-500 text-xs mt-1 ml-1 transition-all duration-200 ease-in-out">
-                {errors.name.message}
-              </p>
-            )}
-          </div>
-          <div className="mb-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 max-w-md mt-10">
+          <div className="mb-4 bg-slate-800">
             <input
               {...register("email")}
-              placeholder="Email (optionnel)"
-              className="w-full border p-2 rounded"
+              placeholder="Email (obligatoire)"
+              className="w-full border p-2 rounded placeholder:gray-400 bg-slate-800!"
             />
             {errors.email && (
               <p className="text-red-500 text-xs mt-1 ml-1 transition-all duration-200 ease-in-out">
@@ -76,11 +93,32 @@ export default function Contact() {
             )}
           </div>
           <div className="mb-4">
+            <select
+              {...register("subject")}
+              defaultValue=""
+              className={`w-full border p-2 rounded ${watch("subject") === "" ? "text-gray-400" : "text-white"} bg-slate-800`}
+            >
+              <option className="text-gray-400" value="" disabled >
+                Sélectionnez l'object
+              </option>
+              <option value="demande_projet">Demande de projet</option>
+              <option value="question_projects">Question sur mes projects</option>
+              <option value="collaboration">Collaboration</option>
+              <option value="autre">Autre</option>
+            </select>
+            {errors.subject && (
+              <p className="text-red-500 text-xs mt-1 ml-1 transition-all duration-200 ease-in-out">
+                {errors.subject.message}
+              </p>
+            )}
+          </div>
+
+          <div className="mb-4">
             <textarea
               {...register("message")}
               rows={4}
               placeholder="Message"
-              className="w-full border p-2 rounded"
+              className="w-full border p-2 rounded placeholder:gray-400"
             />
             {errors.message && (
               <p className="text-red-500 text-xs mt-1 ml-1 transition-all duration-200 ease-in-out">
@@ -93,13 +131,31 @@ export default function Contact() {
 
           <button
             type="submit"
-            className="px-4 py-2 bg-sky-500 text-white rounded hover:bg-sky-600"
+            disabled={isDisabled}
+            className={`relative px-4 py-2 bg-sky-500 rounded text-white flex items-center justify-center gap-2
+              ${isDisabled
+                ? "bg-sky-300 cursor-not-allowed"
+                : "bg-sky-500 hover:bg-sky-600"} `}
           >
-            Envoyer
+            <span className={loading ? "opacity-0" : "opacity-100"}>
+              Envoyer
+            </span>
+            {loading && (
+              <span className="absolute flex items-center gap-2">
+                <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                Envoi...
+              </span>
+            )}
+            {/* {loading ? "Envoi..." : "Envoyer"} */}
           </button>
 
           {status && <p className="text-sm text-slate-400">{status}</p>}
         </form>
+
+        <p className="text-[clamp(0.75rem,2vw,1rem)] text-gray-400 leading-relaxed space-y-4 mt-4 max-w-md">
+          <span>Vous avez une question ou un projet en tête ? Écrivez-moi ! </span><br />
+          <span>Je reponds sous 24h à tous les messages.</span>
+        </p>
       </motion.section>
     </>
   );
