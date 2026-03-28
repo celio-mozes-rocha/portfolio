@@ -8,24 +8,23 @@ RUN npm ci
 
 COPY . .
 
-RUN npm run build
+ARG GIT_COMMIT
+ARG BUILD_DATE
+ENV NEXT_PUBLIC_GIT_COMMIT=$GIT_COMMIT
+ENV NEXT_PUBLIC_BUILD_DATE=$BUILD_DATE
+ENV NODE_ENV=production
 
+
+RUN npm run build
 
 # ---------- Production stage ----------
 FROM node:20-alpine AS runner
 
 WORKDIR /app
 
-ENV NODE_ENV=production
-
 COPY package*.json ./
 RUN npm ci --only=production
 
-ARG GIT_COMMIT
-ARG BUILD_DATE
-
-ENV NEXT_PUBLIC_GIT_COMMIT=$GIT_COMMIT
-ENV NEXT_PUBLIC_BUILD_DATE=$BUILD_DATE
 
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
