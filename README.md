@@ -1,36 +1,121 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio – Développeur Web
 
-## Getting Started
+Bienvenue sur mon portfolio personnel.
+Ce projet présente mes réalisations, mes compétences et permet de me contacter directement via un formulaire.
 
-First, run the development server:
+---
+![Preview](./public/images/portfolio.png)
+
+## Démo
+
+ [https://celio-mozes.fr](https://celio-mozes.fr)
+
+---
+
+## Fonctionnalités
+
+* Présentation de mes projets
+* Section Expériences/compétences
+* Formulaire de contact avec envoi d’email
+* Validation des champs avec Zod
+* Expérience utilisateur optimisée :
+
+  * bouton désactivé si formulaire invalide
+  * loader pendant l’envoi
+  * feedback utilisateur (succès / erreur)
+
+---
+
+## Stack technique
+
+* **Frontend** : Next.js, React, TypeScript
+* **UI** : Tailwind CSS, Framer Motion
+* **Formulaire** : React Hook Form + Zod
+* **Backend** : API route Next.js
+* **Email** : SMTP (Brevo)
+* **CI/CD** : GitHub Actions + Docker
+* **Déploiement** : VPS (Docker Compose)
+
+---
+
+## Installation
 
 ```bash
+git clone https://github.com/celio-mozes-rocha/portfolio.git
+cd ton-repo
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Variables d’environnement
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Créer un fichier `.env` :
 
-## Learn More
+```env
+SMTP_HOST=your_smtp_host
+SMTP_PORT=your_smtp_port
+SMTP_USER=your_user
+SMTP_PASS=your_password
+CONTACT_EMAIL=your_email
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Déploiement
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Le projet est automatiquement déployé via **GitHub Actions** :
 
-## Deploy on Vercel
+* build de l’image Docker
+* transfert vers le VPS
+* lancement avec Docker Compose
+* gestion des variables via secrets GitHub
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Structure du projet
+
+```
+├── app
+│   ├── api
+│   │   └── contact
+│   │       └── route.ts
+├── components
+│   ├── sections
+│   │   ├── contact
+│   │   │   ├── ContactForm.tsx
+│   │   │   └── Contact.tsx
+│   │   ├── experiences
+│   │   │   ├── ExperienceCard.tsx
+│   │   │   └── Experience.tsx
+│   │   ├── Projects.tsx
+│   └── SideBar.tsx
+├── lib
+│   ├── contact-schema.ts
+│   ├── rateLimit.ts
+│   └── utils.ts
+```
+
+---
+
+## Améliorations futures
+
+* Ajout de notifications toast
+* Amélioration des animations
+* Optimisation SEO
+* Optimisation du responsive
+
+---
+
+## Me contacter
+
+Via le formulaire du site
+ou directement : **[ton@email.com](mailto:ton@email.com)**
+
+---
+
+## Licence
+
+Ce projet est open-source.
+
