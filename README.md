@@ -111,7 +111,7 @@ Le projet est automatiquement déployé via **GitHub Actions** :
 ## Me contacter
 
 Via le formulaire du site
-ou directement : **[ton@email.com](mailto:ton@email.com)**
+ou directement : **[celio.rocha@free.fr](mailto:celio.rocha@free.fr)**
 
 ---
 
