@@ -3,6 +3,13 @@ import { NextResponse } from "next/server";
 import { contactSchema } from "@/lib/contact-schema";
 import rateLimit from "../../../lib/rateLimit";
 
+const SUBJECT_MAP: Record<string, string> = {
+  demande_projet: "Demande de projet",
+  question_projects: "Question sur mes projets",
+  collaboration: "Collaboration",
+  autre: "Autre",
+};
+
 export async function POST(req: Request) {
   try {
     const ip = req.headers.get("x-forwarded-for") ?? "unknown";
@@ -18,7 +25,9 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Invalid form dat" }, { status: 400 });
     }
 
-    const { name, email, message, company } = parsed.data;
+    const { subject, email, message, company } = parsed.data;
+
+    const subjectText = SUBJECT_MAP[subject] || "Autre";
 
     // honeypot anti-spamÒ
     if (company) {
@@ -38,11 +47,10 @@ export async function POST(req: Request) {
     await transporter.sendMail({
       from: `"Portfolio contact" <${process.env.CONTACT_EMAIL}>`,
       to: process.env.CONTACT_EMAIL,
-      subject: `Message de ${name}`,
+      subject: `Portfolio: ${subjectText}`,
       replyTo: email || process.env.CONTACT_EMAIL,
       text: message,
       html: `
-        <p><strong>Nom :</strong> ${name}</p>
         <p><strong>Email :</strong> ${email}</p>
         <p><strong>Message :</strong></p>
         <p>${message}</p>
