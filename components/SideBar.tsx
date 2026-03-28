@@ -95,11 +95,11 @@ export default function SideBar() {
         <hr />
         <br />
         <p>© {new Date().getFullYear()} Célio MOZES ROCHA</p>
-        {/*         <p className="text-xs text-gray-500 mt-4">
+        <p className="text-xs text-gray-500 mt-2">
           Deploy: {process.env.NEXT_PUBLIC_BUILD_DATE}
           {" | "}
           Commit: {process.env.NEXT_PUBLIC_GIT_COMMIT}
-        </p> */}
+        </p>
       </footer>
     </aside>
   );
