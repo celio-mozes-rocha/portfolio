@@ -1,36 +1,4 @@
-type ExperienceType = {
-  title: string;
-  company?: string;
-  period: string;
-  description: string;
-  tech?: string[];
-};
-
-type JobExperience = ExperienceType & {
-  type: "job";
-  responsibilities: string[];
-};
-
-type EducationExperience = ExperienceType & {
-  type: "education";
-  learnings: string[];
-};
-
-type ProjetExperience = ExperienceType & {
-  type: "project";
-  collaboration?: string[];
-};
-
-export type ExperiencesType =
-  | JobExperience
-  | EducationExperience
-  | ProjetExperience;
-
-type ExperienceSectionType = {
-  sectionTitle: string;
-  experiences: ExperiencesType[];
-};
-
+import type { ExperienceSectionType } from "@/app/types/experience";
 // Données
 export const experienceData: ExperienceSectionType[] = [
   {
