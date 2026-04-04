@@ -14,7 +14,7 @@ export default function Hero() {
       <h2 className="text-[clamp(0.8rem,2vw,1.2rem)] text-sky-400 mt-1">
         Concepteur d'applications full-stack
       </h2>
-      <p className="text-[clamp(0.75rem,2vw,1rem)] text-gray-400 leading-relaxed space-y-4 mt-4 max-w-sm">
+      <p className="text-[clamp(0.875rem,1.5vw,1rem)] text-gray-400 leading-relaxed space-y-4 mt-4 max-w-sm">
         Je développe des applications web modernes avec React, Next.js et
         Node.js.
       </p>

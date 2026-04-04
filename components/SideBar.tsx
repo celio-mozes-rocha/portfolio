@@ -20,9 +20,10 @@ export default function SideBar() {
         <span className={`block w-6 h-0.5 bg-current transition-transform ${isOpen ? "-rotate-45 -translate-y-1" : ""}`}></span>
       </button>
 
-      <aside className="w-full lg:basis-2/5 lg:h-screen lg:sticky lg:top-0 flex flex-col justify-between px-6 lg:px-12 py-8 border-b lg:border-b-0 border-slate-700">
+      <aside className="w-full lg:basis-2/5 lg:h-screen lg:sticky lg:top-0 flex flex-col justify-between px-6 lg:px-12 py-8 border-b lg:border-b-0 border-slate-700 lg:overflow-y-auto">
         <Hero />
         <NavaBar isOpen={isOpen} onClose={() => setIsOpen(false)} />
+        <Footer className="lg:block hidden" />
       </aside>
 
     </>
