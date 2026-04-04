@@ -1,10 +1,12 @@
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
+import type { FooterProps } from "@/app/types/footerProps";
 
-export default function Footer() {
+
+export default function Footer({ className = "" }: FooterProps) {
 
   return (
-    <footer className="text-xs sm:text-sm text-gray-500">
+    <footer className={`text-xs sm:text-sm text-gray-500 ${className} `}>
       <div className="flex gap-4 mb-3">
         <a
           href="https://github.com"
@@ -35,6 +37,9 @@ export default function Footer() {
         Deploy: {process.env.NEXT_PUBLIC_BUILD_DATE}
         {" | "}
         Commit: {process.env.NEXT_PUBLIC_GIT_COMMIT}
+      </p>
+      <p className="text-xs text-gray-500 mt-2">
+        Built with <span className="text-sky-400">Next.js</span> • Deployed on my <span className="text-sky-400">VPS</span>
       </p>
     </footer>
   )

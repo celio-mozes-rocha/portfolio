@@ -27,7 +27,7 @@ export default function ExperienceCard({ exp }: { exp: ExperiencesType }) {
             <ul>
               {exp.responsibilities.map((r, i) => (
                 <li
-                  className="relative pl-3 before:content-['⬩'] before:absolute before:left-0 before:text-sky-400 text-[16px]"
+                  className="relative pl-3 before:content-['⬩'] before:absolute before:left-0 before:text-sky-400 text-[clamp(0.875rem,1.5vw,1rem)]"
                   key={i}
                 >
                   {r}
@@ -42,7 +42,7 @@ export default function ExperienceCard({ exp }: { exp: ExperiencesType }) {
             <ul>
               {exp.learnings.map((l, i) => (
                 <li
-                  className="relative pl-3 before:content-['⬩'] before:absolute before:left-0 before:text-sky-400 text-[16px]"
+                  className="relative pl-3 before:content-['⬩'] before:absolute before:left-0 before:text-sky-400 text-[clamp(0.875rem,1.5vw,1rem)]"
                   key={i}
                 >
                   {l}
@@ -57,7 +57,7 @@ export default function ExperienceCard({ exp }: { exp: ExperiencesType }) {
             <ul>
               {exp.collaboration?.map((c, i) => (
                 <li
-                  className="relative pl-3 before:content-['⬩'] before:absolute before:left-0 before:text-sky-400 text-[16px]"
+                  className="relative pl-3 before:content-['⬩'] before:absolute before:left-0 before:text-sky-400 text-[clamp(0.875rem,1.5vw,1rem)]"
                   key={i}
                 >
                   {c}
