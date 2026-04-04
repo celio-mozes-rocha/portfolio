@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { NavBarProps } from "@/app/types/navBarProps";
-import { label } from "framer-motion/client";
 
 export default function NavaBar({ isOpen, onClose }: NavBarProps) {
   const pathname = usePathname();
