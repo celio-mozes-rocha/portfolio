@@ -38,6 +38,9 @@ export default function Footer({ className = "" }: FooterProps) {
         {" | "}
         Commit: {process.env.NEXT_PUBLIC_GIT_COMMIT}
       </p>
+      <p className="text-xs text-gray-500 mt-2">
+        Built with <span className="text-sky-400">Next.js</span> • Deployed on my <span className="text-sky-400">VPS</span>
+      </p>
     </footer>
   )
 }
