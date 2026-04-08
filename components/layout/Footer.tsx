@@ -23,7 +23,7 @@ export default function Footer({ className = "" }: FooterProps) {
           <FaLinkedin size={30} />
         </a>
         <a
-          href="mailto:celio.rocha@free.fr"
+          href="mailto:contact@celio-mozes.fr"
           className="hover:text-white"
           target="_blank"
         >
