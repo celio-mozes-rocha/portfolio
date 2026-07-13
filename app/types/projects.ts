@@ -6,3 +6,8 @@ export type ProjectsType = {
   demo: string;
   image: string;
 };
+
+export type ScrollableScreenshotProps = {
+  src: string;
+  alt: string;
+};
