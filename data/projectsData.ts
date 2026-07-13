@@ -1,4 +1,5 @@
-export const projects = [
+import { ProjectsType } from "@/app/types/projects";
+export const projects: ProjectsType[] = [
   {
     title: "Application Météo Android",
     description:
