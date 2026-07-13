@@ -1,4 +1,21 @@
-export const projects = [
+import { ProjectsType } from "@/app/types/projects";
+export const projects: ProjectsType[] = [
+  {
+    title: "Application Météo Android",
+    description:
+      "Application mobile météo développée en Kotlin avec Jetpack Compose. Elle récupère les données météorologiques via l’API OpenWeather et affiche les conditions actuelles ainsi que les prévisions. Architecture MVVM avec gestion du timezone local, recherche de villes via Nominatim et interface dynamique avec icônes météo personnalisées.",
+    tech: [
+      "Kotlin",
+      "Jetpack Compose",
+      "MVVM",
+      "Retrofit",
+      "OpenWeather API",
+      "Nominatim API",
+    ],
+    github: "https://github.com/celio-mozes-rocha/AppMeteo",
+    demo: "#",
+    image: "/images/weather-app.png",
+  },
   {
     title: "Planétarium Interactif",
     description:
@@ -13,7 +30,7 @@ export const projects = [
     description:
       "Projet personnel d’implémentation d'un jeu d’échecs interactif avec validation des règles via chess.js. Version multijoueur en temps réel utilisant WebSockets pour synchroniser les coups entre joueurs (en cours).",
     tech: ["React", "TypeScript", "Node.js", "chess.js", "Socket.io"],
-    github: "https://github.com/celio-mozes-rocha/ChessLite-WebSocket",
+    github: "https://github.com/celio-mozes-rocha/ChessLite",
     demo: "#",
     image: "/images/Chess.png",
   },

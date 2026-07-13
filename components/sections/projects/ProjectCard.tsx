@@ -6,11 +6,13 @@ import { ProjectsType } from "@/app/types/projects";
 export default function ProjectCard({ proj }: { proj: ProjectsType }) {
   return (<>
     {/* image */}
+
     <img
       src={proj.image}
       alt={proj.title}
       className="w-full md:w-50 rounded-md opacity-80 group-hover:opacity-100 transition mt-0"
     />
+
 
     {/* texte */}
     <div className="flex flex-col gap-3 md:w-142">

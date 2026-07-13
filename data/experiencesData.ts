@@ -52,6 +52,23 @@ export const experienceData: ExperienceSectionType[] = [
     experiences: [
       {
         type: "project",
+        title: "Application météo Android",
+        period: "Mai 2026 - ",
+        description:
+          "Développement d'une application météo Android en Kotlin permettant de consulter les conditions météorologiques actuelles et les prévisions sur plusieurs jours. Le projet met en œuvre une architecture MVVM, une interface réalisée avec Jetpack Compose et l'intégration de services REST pour la récupération des données météo et la recherche de villes.",
+        tech: [
+          "Kotlin",
+          "Jetpack Compose",
+          "MVVM",
+          "Retrofit",
+          "OpenWeather API",
+          "Nominatim",
+          "Android Studio",
+          "Gradle",
+        ],
+      },
+      {
+        type: "project",
         title: "Planétarium",
         period: "Janvier 2026 - ",
         description:
