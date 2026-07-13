@@ -1,4 +1,7 @@
 # Portfolio – Développeur Web
+[![CI](https://img.shields.io/github/actions/workflow/status/celio-mozes-rocha/portfolio/deploy.yml?branch=main)](https://github.com/celio-mozes-rocha/portfolio/actions)
+[![License](https://img.shields.io/github/license/celio-mozes-rocha/portfolio)](https://github.com/celio-mozes-rocha/portfolio/blob/main/LICENSE)
+[![Last Commit](https://img.shields.io/github/last-commit/celio-mozes-rocha/portfolio)](https://github.com/celio-mozes-rocha/portfolio/commits/main)
 
 Bienvenue sur mon portfolio personnel.
 Ce projet présente mes réalisations, mes compétences et permet de me contacter directement via un formulaire.
