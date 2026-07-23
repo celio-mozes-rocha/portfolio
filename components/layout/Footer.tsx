@@ -9,7 +9,7 @@ export default function Footer({ className = "" }: FooterProps) {
     <footer className={`text-xs sm:text-sm text-gray-500 ${className} `}>
       <div className="flex gap-4 mb-3">
         <a
-          href="https://github.com"
+          href="https://github.com/celio-mozes-rocha"
           className="hover:text-white"
           target="_blank"
         >
